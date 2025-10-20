@@ -192,10 +192,10 @@ if st.session_state.movie_searched:
             video_id, video_url=get_video_url(title_input)
 
             # Replace with your API key
-            API_KEY = 'AIzaSyC6RfcshTq0QIefkxYig3DdW5AvuUYhcJE'
+            API_KEY_YT = st.secrets["api_keys"]["API_KEY_YT"]
 
             # Initialize YouTube API client
-            youtube = build('youtube', 'v3', developerKey=API_KEY)
+            youtube = build('youtube', 'v3', developerKey=API_KEY_YT)
 
             def get_video_stats(video_id):
                 # Get video statistics
@@ -347,7 +347,7 @@ if st.session_state.movie_searched:
 
                 client = ChatCompletionsClient(
                     endpoint=LLM_ENDPOINT,
-                    credential=AzureKeyCredential(LLM_TOKEN)
+                    credential=AzureKeyCredential(LLM_TOKEN_YOUTUBE)
                 )
 
                 response = client.complete(
@@ -452,7 +452,7 @@ if st.session_state.movie_searched:
 
                 client = ChatCompletionsClient(
                     endpoint=LLM_ENDPOINT,
-                    credential=AzureKeyCredential(LLM_TOKEN)
+                    credential=AzureKeyCredential(LLM_TOKEN_REDDIT)
                 )
 
                 response = client.complete(
@@ -507,7 +507,7 @@ if st.session_state.movie_searched:
 
                 client = ChatCompletionsClient(
                     endpoint=LLM_ENDPOINT,
-                    credential=AzureKeyCredential(LLM_TOKEN)
+                    credential=AzureKeyCredential(LLM_TOKEN_GOOGLE)
                 )
 
                 response = client.complete(
